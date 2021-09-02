@@ -31,6 +31,13 @@ final class Todo
         return $todo;
     }
 
+    public static function newFromDto(TodoDto $dto): self
+    {
+        $todo = new self(uniqid(), $dto->getTitle());
+        $todo->isDone = $dto->isDone();
+        return $todo;
+    }
+
     public function identifier(): string
     {
         return $this->identifier;

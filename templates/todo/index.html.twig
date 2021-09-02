@@ -1,0 +1,27 @@
+{% extends "base.html.twig" %}
+{% block title "Liste des choses à faire" %}
+{% block body %}
+    <h1>Liste des choses à faire</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>A faire</th>
+            <th>Fait ?</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for todo in todos %}
+            <tr>
+                <td>{{ todo.title }}</td>
+                <td>{{ todo.isDone ? 'Oui':'Non' }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">Bravo il n'y a rien à faire !</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <hr>
+    <a href="{{ path('todo_add') }}">Ajouter une tâche à faire ?</a>
+{% endblock %}

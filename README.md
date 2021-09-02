@@ -17,3 +17,30 @@ Pouvoir charger un agregat en provenance de la base de données. Côté infra, D
 L'entité est dans `Infra\Entity\DoctrineTodo`.
 
 L'opération inverse est également réalisé pour sauvegarder les données en base de données.
+
+# Etape 2
+
+Installer Symfony et brancher le code métier.
+
+# Prérequis
+
+* PHP 7.4
+* PDO SQLite
+
+# Installation
+
+```shell
+composer install
+bin/console doctrine:database:create
+bin/console doctrine:migration:migrate
+```
+
+# Exécuter un serveur Web avec Symfony Cli ou Rymfony
+
+[Download Rymfony](https://github.com/Orbitale/Rymfony)
+
+[Download Symfony Cli](https://symfony.com/download)
+
+Lancer la commande :
+
+`symfony serve -d`

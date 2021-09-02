@@ -9,17 +9,31 @@ declare(strict_types=1);
 namespace App\Infra\Entity;
 
 use App\Domain\DTO\TodoDto;
+use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * @ORM\Entity()
+ */
 class DoctrineTodo implements TodoDto
 {
+    /**
+     * @ORM\Column(type="string", length=50, nullable=false)
+     * @ORM\Id()
+     */
     private string $identifier;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=false)
+     */
     private string $title;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=false)
+     */
     private bool $isDone = false;
 
     //Permet de l'utiliser plus tard dans les formulaires Symfony
-    public function __construct(?string $identifier)
+    public function __construct(?string $identifier = null)
     {
         $this->identifier = $identifier ?? uniqid();
     }

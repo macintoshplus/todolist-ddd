@@ -6,7 +6,21 @@
 
 declare(strict_types=1);
 
-final class DoctrineTodoRepository /* extends ServiceRepository */
-{
+namespace App\Infra\Repository;
 
+use App\Infra\Entity\DoctrineTodo;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Persistence\ManagerRegistry;
+
+final class DoctrineTodoRepository extends ServiceEntityRepository
+{
+    public function __construct(ManagerRegistry $registry)
+    {
+        parent::__construct($registry, DoctrineTodo::class);
+    }
+
+    public function save(DoctrineTodo $entity){
+        $this->_em->persist($entity);
+        $this->_em->flush();
+    }
 }
